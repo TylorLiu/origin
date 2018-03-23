@@ -1,0 +1,20 @@
+github:
+  client:
+    clientId: e3395dca62e0181f3dbc
+    clientSecret: 453bf38efc4b8edb863dc7b3f71c47d6fb158a96
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+
+spring:
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://127.0.0.1:5432/tylor
+      username: postgres
+      password: 88075998
+  mvc:
+    static-path-pattern: /**
+server:
+  port: 80

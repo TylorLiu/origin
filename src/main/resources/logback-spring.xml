@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+
+	<contextName>origin</contextName>
+	<property name="log.path" value="../logs" /><!-- 用来定义变量值的标签	在上下文使用-->
+	<!--<property name="controller_file" value="bams-controller-api.log" />-->
+	<property name="file" value="practice.log" />
+	<property name="consolePattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36}- %msg%n" />
+	<property name="filePattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36}- %msg%n" />
+	<!--输出到控制台 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${consolePattern}</pattern>
+		</encoder>
+	</appender>
+
+	<!--&lt;!&ndash;controller层 输出日志到文件 &ndash;&gt;-->
+	<!--<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+		<!--<file>${log.path}/${controller_file}</file>-->
+		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+			<!--<fileNamePattern>${log.path}/controller-logback.%d{yyyy-MM-dd}.zip</fileNamePattern>-->
+			<!--<maxHistory>30</maxHistory>-->
+			<!--<totalSizeCap>500MB</totalSizeCap>-->
+		<!--</rollingPolicy>-->
+		<!--<encoder>-->
+			<!--<pattern>${filePattern}</pattern>-->
+		<!--</encoder>-->
+	<!--</appender>-->
+	
+	<!--普通日志输出到文件 -->
+	<appender name="file2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${file}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>practice%d{yyyy-MM-dd}(%i).zip</fileNamePattern>
+      <maxFileSize>50MB</maxFileSize>
+			<maxHistory>180</maxHistory>
+			<totalSizeCap>50GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${filePattern}</pattern>
+		</encoder>
+	</appender>
+	
+	
+	
+	<!-- 用来指定最基础的日志输出级别 -->
+	<root level="info">
+		<appender-ref ref="console" />
+	 	<appender-ref ref="file2" /> 
+	</root>
+	 
+	<!--<logger name="com.hikivision.bams.controller" level="info" additivity="false">&lt;!&ndash; additivity属性为false，表示此loger的打印信息不再向上级传递 &ndash;&gt;-->
+		<!--<appender-ref ref="file" />-->
+	<!--</logger>-->
+</configuration>
