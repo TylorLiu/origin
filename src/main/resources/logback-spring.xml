@@ -32,7 +32,7 @@
 	<appender name="file2" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${log.path}/${file}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>practice%d{yyyy-MM-dd}(%i).zip</fileNamePattern>
+			<fileNamePattern>practice%d{yyyy-MM-dd}#%i.zip</fileNamePattern>
       <maxFileSize>50MB</maxFileSize>
 			<maxHistory>180</maxHistory>
 			<totalSizeCap>50GB</totalSizeCap>

@@ -8,7 +8,7 @@ import org.tylor.origin.filter.AuthenticationFilter;
 /**
  * @author liubin10  2018/3/20
  */
-@Configuration
+//@Configuration
 public class FilterConfig {
 
     @Bean(name = "authenticationFilter")

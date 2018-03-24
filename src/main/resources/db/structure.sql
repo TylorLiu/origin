@@ -1,0 +1,11 @@
+CREATE TABLE user_info
+(
+  id BIGINT IDENTITY PRIMARY KEY ,
+  username VARCHAR2(64) NOT NULL,
+  password VARCHAR2(128),
+  create_time TIMESTAMP,
+  update_time TIMESTAMP,
+  remark VARCHAR2(256)
+);
+
+INSERT INTO USER_INFO (USERNAME,PASSWORD) VALUES ('root','654321');

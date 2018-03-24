@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example </title>
+      <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+      <script type="text/javascript"
+              src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+      <script>
+        var register= function () {
+          $.ajax(      //ajax方式提交表单
+              {
+                url: '/register',
+                type: 'post',
+                dataType: 'json',
+                data:{
+                  username: $("#username").val(),
+                  password: $("#password").val()
+                },
+                success: function (response) {
+                  if (response.success == true ) {
+                    alert("注册成功");
+                  } else {
+                    alert(response.msg);
+                  }
+                },
+                clearForm: false,//禁止清楚表单
+                resetForm: false //禁止重置表单
+              });
+        }
+
+
+      </script>
+    </head>
+    <body>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.sucess}">
+          注册成功，请登陆
+        </div>
+        <form id="form" th:action="@{/register}" method="post">
+            <div><label> User Name : <input type="text" id="username"/> </label></div>
+            <div><label> Password: <input type="password" id="password"/> </label></div>
+            <div><label> Confirm Password: <input type="password" name="password2"/> </label></div>
+            <div><button onclick="register()" value="Sign Up"/></div>
+        </form>
+    </body>
+</html>

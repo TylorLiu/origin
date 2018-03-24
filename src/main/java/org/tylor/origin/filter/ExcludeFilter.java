@@ -17,7 +17,7 @@ import org.springframework.util.AntPathMatcher;
  */
 public abstract class ExcludeFilter implements Filter {
 
-    protected final static  String[] EXCLUDE_PATH = {"/login**","**/register/**","/login/**"};
+    protected final static  String[] EXCLUDE_PATH = {"/login**","**/register/**","/login/**","/webjars/**", "/home"};
 
 
     private AntPathMatcher pathMatcher = new AntPathMatcher();
